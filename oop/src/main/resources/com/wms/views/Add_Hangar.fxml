@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.controller.HangarController">
+   <children>
+      <Label layoutX="184.0" layoutY="47.0" text="Lagerstandort hinzufügen!">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <VBox layoutX="178.0" layoutY="118.0" prefHeight="225.0" prefWidth="244.0">
+         <children>
+            <TextField fx:id="hangerIdentification" prefHeight="8.0" prefWidth="149.0" promptText="Hangar Bezeichnung" text="" />
+            <TextField fx:id="hangerSize" promptText="Hangar Größe in m2" text="" />
+         </children>
+      </VBox>
+      <Button layoutX="508.0" layoutY="349.0" mnemonicParsing="false" text="Hinzufügen" onAction="#handleHinzufuegenButtonClicked"/>
+      <Button layoutX="14.0" layoutY="349.0" mnemonicParsing="false" text="Zurück" />
+      <Button layoutX="551.0" layoutY="14.0" mnemonicParsing="false" text="Exit" />
+   </children>
+</AnchorPane>

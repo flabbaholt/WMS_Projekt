@@ -1,0 +1,13 @@
+## Interface:Displayable ## 
+
+Durch dieses Interface können alle Attribute der Model-Klassen auch im Terminal ausgegeben werden
+----- Aufbau (Dinge zwischen ?-Klammern müssen ausgetauscht werden)
+
+    - print Befehl mit (">> Display-?Model-Klasse?")
+    - erzuegen eines Objektes der ?Model-Klasse? mit den zugehoerigen Attributen
+    - Displayer Instanz erzeugen
+    - Die Metohde "displayObject" der Displayer-Instanz aufrufen
+            |_Das Objekt aus Zeile 2 und das String-Array mit den Attributen uebergeben
+
+
+## ... 
