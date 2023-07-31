@@ -1,4 +1,4 @@
-package com.oop.controller;
+package com.wms.controller;
 
 public class ShelfspaceController {
     

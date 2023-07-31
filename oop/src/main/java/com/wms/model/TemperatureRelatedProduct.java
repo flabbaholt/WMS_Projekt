@@ -1,4 +1,4 @@
-package com.oop.model;
+package com.wms.model;
 
 public class TemperatureRelatedProduct extends Product {
     // attributes 

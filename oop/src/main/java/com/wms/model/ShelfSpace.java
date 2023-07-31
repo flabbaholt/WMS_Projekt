@@ -1,7 +1,7 @@
-package com.oop.model;
+package com.wms.model;
 
-import com.oop.model.interfaces.Displayable;
-import com.oop.util.Displayer;
+import com.wms.model.interfaces.Displayable;
+import com.wms.util.Displayer;
 
 public class ShelfSpace implements Displayable{
     

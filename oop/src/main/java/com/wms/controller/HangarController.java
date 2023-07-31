@@ -1,7 +1,7 @@
-package com.oop.controller;
+package com.wms.controller;
 
 
-import com.oop.model.Hangar;
+import com.wms.model.Hangar;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

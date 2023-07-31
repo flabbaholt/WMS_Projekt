@@ -1,4 +1,4 @@
-package com.oop.controller;
+package com.wms.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

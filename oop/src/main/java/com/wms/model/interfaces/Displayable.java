@@ -1,4 +1,4 @@
-package com.oop.model.interfaces;
+package com.wms.model.interfaces;
 
 public interface Displayable {
     

@@ -1,6 +1,6 @@
-package com.oop.model;
+package com.wms.model;
 
-import com.oop.model.interfaces.Displayable;
+import com.wms.model.interfaces.Displayable;
 
 public class Product implements Displayable{
     // attributes
