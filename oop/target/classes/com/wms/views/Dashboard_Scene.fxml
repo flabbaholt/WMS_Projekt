@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<children>
+   <Button layoutX="532.0" layoutY="8.0" mnemonicParsing="false" text="Exit" />
+   <Button layoutX="266.0" layoutY="362.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="100.0" text="Löschen" />
+   <Label layoutX="8.0" layoutY="12.0" text="Company X | Warehouse Management System">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <TextField layoutX="316.0" layoutY="8.0" prefHeight="5.0" prefWidth="149.0" promptText="Suche..." />
+   <Button layoutX="465.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Suchen" />
+      <TextField layoutX="316.0" layoutY="8.0" />
+      <TableView layoutX="35.0" layoutY="84.0" prefHeight="235.0" prefWidth="498.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="tableview" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+</children>
+        </AnchorPane>
