@@ -1,13 +1,7 @@
 package com.wms.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,7 +11,15 @@ import javafx.util.Callback;
 
 public class DashboardController {
  
+    @FXML
+    private TableView<String> dashboard_table;
+
+    @FXML
+    private TableColumn<String, String> buttonColumn;
+
+
     public void initialize() {
+        
         // Erstelle die Zelle, um Buttons im TableView anzuzeigen
         buttonColumn.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
             @Override
@@ -52,6 +54,6 @@ public class DashboardController {
         for (int i = 0; i < 10; i++) {
             data.add("Button " + (i + 1));
         }
-        tableView.setItems(data);
+        dashboard_table.setItems(data);
     }
 }
