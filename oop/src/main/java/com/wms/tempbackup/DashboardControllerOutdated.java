@@ -1,4 +1,4 @@
-package com.wms.controller;
+package com.wms.tempbackup;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

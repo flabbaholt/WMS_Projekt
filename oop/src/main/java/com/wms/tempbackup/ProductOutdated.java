@@ -1,4 +1,4 @@
-package com.wms.model;
+package com.wms.tempbackup;
 
 import com.wms.model.interfaces.Displayable;
 
