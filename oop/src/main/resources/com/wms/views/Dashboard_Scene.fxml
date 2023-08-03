@@ -8,26 +8,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.DashboardController">
+<fx:root minHeight="500.0" minWidth="1080.0" type="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.DashboardController">
 <children>
-   <Button fx:id="exit_button_dashboard" layoutX="532.0" layoutY="8.0" mnemonicParsing="false" text="Exit" />
-   <Button fx:id="add_hangar" layoutX="8.0" layoutY="134.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
+   <Button fx:id="exit_button_dashboard" layoutX="1031.0" layoutY="9.0" mnemonicParsing="false" text="Exit" />
+   <Button fx:id="add_hangar" layoutX="8.0" layoutY="199.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
    <Label fx:id="company_name" layoutX="8.0" layoutY="12.0" text="Company X | Warehouse Management System">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
    </Label>
    <TextField layoutX="316.0" layoutY="8.0" prefHeight="5.0" prefWidth="149.0" promptText="Suche..." />
-   <Button fx:id="search_button" layoutX="465.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Suchen" />
-      <TextField fx:id="search_field" layoutX="316.0" layoutY="8.0" />
-      <TableView fx:id="dashboard_table" layoutX="149.0" layoutY="76.0" prefHeight="347.0" prefWidth="401.0">
+      <TextField fx:id="search_field" layoutX="278.0" layoutY="8.0" prefHeight="26.0" prefWidth="745.0" promptText="Suchen..." />
+      <TableView fx:id="dashboard_table" layoutX="149.0" layoutY="76.0" prefHeight="402.0" prefWidth="915.0">
         <columns>
-          <TableColumn fx:id="buttonColumn" prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="productIDTableColumn" prefWidth="68.79998779296875" text="ProductID" />
+          <TableColumn fx:id="productNumberTableColumn" prefWidth="137.0" text="ProductNumber" />
+            <TableColumn fx:id="stellplatzIdTableColumn" prefWidth="89.0" text="StellplatzID" />
+            <TableColumn fx:id="AmountTableColumn" prefWidth="78.0" text="Amount" />
+            <TableColumn fx:id="ProductNameTableColumn" prefWidth="299.0" text="ProductName" />
+            <TableColumn fx:id="ManufacturerTableColumn" minWidth="0.0" prefWidth="139.0" text="Manufacturer" />
+            <TableColumn fx:id="arrivalTimeTableColumn" prefWidth="103.0" text="arrivalTime" />
         </columns>
       </TableView>
-      <Button fx:id="add_shelf" layoutX="8.0" layoutY="185.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Regal Hinzufügen" />
-      <Button fx:id="add_shelfspace" layoutX="8.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Stellplatz Hinzufügen" />
-      <Button fx:id="add_product" layoutX="8.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Produkt Hinzufügen" />
+      <Button fx:id="add_shelf" layoutX="8.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Regal Hinzufügen" />
+      <Button fx:id="add_shelfspace" layoutX="8.0" layoutY="277.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Stellplatz Hinzufügen" />
+      <Button fx:id="add_product" layoutX="8.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Produkt Hinzufügen" />
 </children>
         </fx:root>
