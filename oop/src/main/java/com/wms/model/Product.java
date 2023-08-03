@@ -68,7 +68,7 @@ public class Product implements Displayable {
 
     // todo
     private boolean checkInput() {
-        if(this.id >= 0 || this.stellplatz_id >= 0) {
+        if(this.productID >= 0 || this.stellplatzID == null) {
             return false;
         } else if(this.productName ==null) {
             return false;
