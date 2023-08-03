@@ -56,4 +56,13 @@ public class DashboardController {
         }
         dashboard_table.setItems(data);
     }
+
+   //FXMl-Methode, die den add_hangar Button handled. Es soll der view: Add_Hangar aufgerufen werden
+
+   //FXMl-Methode, die den add_shelf Button handled. Es soll der view: Add_Shelf aufgerufen werden
+
+   //FXMl-Methode, die den add_shelfspace Button handled. Es soll der view: Add_ShelfSpace aufgerufen werden
+ 
+   //FXMl-Methode, die den add_product Button handled. Es soll der view: Add_Product aufgerufen werden
+
 }
