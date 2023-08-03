@@ -9,6 +9,8 @@ module com.wms {
 
     opens com.wms to javafx.fxml;
     opens com.wms.controller to javafx.fxml;
+    opens com.wms.model to javafx.base;
+
     
     
 }
