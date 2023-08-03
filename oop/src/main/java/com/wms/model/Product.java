@@ -65,17 +65,22 @@ public class Product implements Displayable{
     
     // todo
     private boolean checkInput() {
-        //code
-        return true;
+        if(this.id >= 0 || this.stellplatz_id >= 0) {
+            return false;
+        } else if(this.productName ==null) {
+            return false;
+        } else if(this.manufacturer == null) {
+            return false;
+        } else if(arrivalTime == null) {
+            return false;
+        } else {
+            return true;
+        }
+        
     }
     // todo
     private void getAllLocationIDs() {
         //code 
-    }
-    // todo
-    private boolean checkIn() {
-        //code
-        return true;
     }
     // todo
     private boolean checkOut() {
