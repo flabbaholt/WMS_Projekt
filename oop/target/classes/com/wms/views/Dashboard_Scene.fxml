@@ -11,7 +11,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.DashboardController">
 <children>
    <Button fx:id="exit_button_dashboard" layoutX="1031.0" layoutY="9.0" mnemonicParsing="false" text="Exit" />
-   <Button fx:id="add_hangar" layoutX="8.0" layoutY="199.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
+   <Button fx:id="add_hangar" layoutX="8.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
    <Label fx:id="company_name" layoutX="8.0" layoutY="12.0" text="Company X | Warehouse Management System">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -29,8 +29,10 @@
             <TableColumn fx:id="arrivalTimeColumn" prefWidth="103.0" text="arrivalTime" />
         </columns>
       </TableView>
-      <Button fx:id="add_shelf" layoutX="8.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Regal Hinzufügen" />
-      <Button fx:id="add_shelfspace" layoutX="8.0" layoutY="277.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Stellplatz Hinzufügen" />
-      <Button fx:id="add_product" layoutX="8.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Produkt Hinzufügen" />
+      <Button fx:id="add_shelf" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Regal Hinzufügen" />
+      <Button fx:id="add_shelfspace" layoutX="8.0" layoutY="180.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Stellplatz Hinzufügen" />
+      <Button fx:id="add_product" layoutX="8.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Produkt Hinzufügen" />
+      <Button fx:id="edit_product" layoutX="8.0" layoutY="399.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: yellow;" text="Produkt bearbeiten" />
+      <Button fx:id="delete_product" layoutX="8.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: red;" text="Produkt löschen" />
 </children>
         </AnchorPane>
