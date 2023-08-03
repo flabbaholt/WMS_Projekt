@@ -1,8 +1,8 @@
 module com.wms {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.graphics;
-    requires java.sql;
+    requires transitive javafx.graphics;
+    requires transitive java.sql;
 
     exports com.wms;
     exports com.wms.controller;
