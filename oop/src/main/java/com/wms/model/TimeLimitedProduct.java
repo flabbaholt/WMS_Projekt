@@ -7,8 +7,8 @@ public class TimeLimitedProduct extends Product {
     private String status;
 
     // constructer
-    public TimeLimitedProduct(int id, int stellplatz_id, String productName, String manufacturer, String arrivalTime, String expiryDate, String status) {
-        super(id, stellplatz_id, productName, manufacturer, arrivalTime);
+    public TimeLimitedProduct(Integer productID, String productNumber, String stellplatzID, String productName, String manufacturer, String arrivalTime, String expiryDate, String status) {
+        super(productID, productNumber, stellplatzID, productName, manufacturer, arrivalTime);
         this.expiryDate = expiryDate;
         this.status = status;
     }

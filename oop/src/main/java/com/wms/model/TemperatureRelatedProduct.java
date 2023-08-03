@@ -6,11 +6,13 @@ public class TemperatureRelatedProduct extends Product {
     private String storageSpecial;
 
     // constructer 
-    public TemperatureRelatedProduct(int id, int stellplatz_id, String productName, String manufacturer, String arrivalTime, String climateCategory, String storageSpecial) {
-        super(id, stellplatz_id, productName, manufacturer, arrivalTime);
+
+    public TemperatureRelatedProduct(Integer productID, String productNumber, String stellplatzID, String productName, String manufacturer, String arrivalTime, String climateCategory, String storageSpecial) {
+        super(productID, productNumber, stellplatzID, productName, manufacturer, arrivalTime);
         this.climateCategory = climateCategory;
         this.storageSpecial = storageSpecial;
     }
+    
 
     // getter -  methods
     public String getClimateCategory() {
