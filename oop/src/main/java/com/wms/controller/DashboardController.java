@@ -180,13 +180,14 @@ public class DashboardController implements Initializable {
     }
     
 
-    //Update Table
+    //Update Table Button
     @FXML
     private void handleRefreshDataButtonClicked(ActionEvent event) {
         // Call the method to update the table data
         updateTableData();
     }
 
+    //FXMl-Methode, die den edit_product Button handled. Es soll der view: EditProduct aufgerufen werden
     // Method to update the table data
     private void updateTableData() {
         // Clear the current data in the ObservableList
