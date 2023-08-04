@@ -1,5 +1,14 @@
 package com.wms.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.wms.DatabaseConnection;
+import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
 
 public class Product implements Displayable {
@@ -89,6 +98,33 @@ public class Product implements Displayable {
     private boolean checkOut() {
         // code
         return true;
+    }
+
+    // Method to update the Product data in the database
+    public void update() {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection con = connectNow.getDBConnection();
+        // Get the database connection
+        try (Connection connection = con) {
+            // Prepare the update query
+            String query = "UPDATE Product SET ProductNumber=?, StellplatzID=?, ProductName=?, Manufacturer=? WHERE ProductID=?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, this.productNumber);
+            statement.setString(2, this.stellplatzID);
+            statement.setString(3, this.productName);
+            statement.setString(4, this.manufacturer);
+            statement.setInt(5, this.productID);
+
+            // Execute the update query
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated == 1) {
+                System.out.println("Product updated successfully!");
+            } else {
+                System.out.println("Failed to update product.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error updating product: " + e.getMessage());
+        }
     }
 
 
