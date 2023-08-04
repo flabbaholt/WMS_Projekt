@@ -143,6 +143,7 @@ public class DashboardController implements Initializable {
 
     //EditProduct Code
     private Stage editProductStage;
+    private Stage addShelfSpace;
 
     //FXMl-Methode, die den edit_product Button handled. Es soll der view: EditProduct aufgerufen werden
     @FXML
@@ -172,6 +173,24 @@ public class DashboardController implements Initializable {
             editProductStage.setScene(new Scene(root));
             editProductStage.initModality(Modality.APPLICATION_MODAL); // Block input events to other windows
             editProductStage.showAndWait(); // Show the window and wait for it to be closed
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //
+    private void openAddWindow(String windowName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wms/views/"+windowName+".fxml"));
+            
+            Parent root = loader.load();
+    
+            // Create a new stage for the Edit_Product window
+            addShelfSpace = new Stage();
+            addShelfSpace.setTitle("Regal hinzufügen");
+            addShelfSpace.setScene(new Scene(root));
+            addShelfSpace.initModality(Modality.APPLICATION_MODAL); // Block input events to other windows
+            addShelfSpace.showAndWait(); // Show the window and wait for it to be closed
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -238,11 +257,26 @@ public class DashboardController implements Initializable {
     //Method to delete the product
 
     //FXMl-Methode, die den add_hangar Button handled. Es soll der view: Add_Hangar aufgerufen werden
+    @FXML
+    public void handleAddHangarButtonClicked(MouseEvent event){
+        openAddWindow("Add_Hangar");
+    }
 
     //FXMl-Methode, die den add_shelf Button handled. Es soll der view: Add_Shelf aufgerufen werden
+    @FXML
+    public void handleAddShelfButtonClicked(MouseEvent event){
+        openAddWindow("Add_Shelf");
+    }
 
     //FXMl-Methode, die den add_shelfspace Button handled. Es soll der view: Add_ShelfSpace aufgerufen werden
-    
+    @FXML
+    public void handleAddShelfSpaceButtonClicked(MouseEvent event){
+        openAddWindow("Add_ShelfSpace");
+    }
     //FXMl-Methode, die den add_product Button handled. Es soll der view: Add_Product aufgerufen werden
+    @FXML
+    public void handleAddProductButtonClicked(MouseEvent event){
+        openAddWindow("Add_Product");
+    }
 
 }
