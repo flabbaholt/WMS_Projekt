@@ -3,12 +3,8 @@ package com.wms.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import com.wms.DatabaseConnection;
-import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
 
 public class Product implements Displayable {

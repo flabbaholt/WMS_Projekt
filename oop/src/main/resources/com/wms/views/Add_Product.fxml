@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.ProductController">
    <children>
-      <Button fx:id="submitEdit" layoutX="225.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#saveProduct" prefHeight="30.0" prefWidth="100.0" text="Fertigstellen">
+      <Button fx:id="submitAdd" layoutX="225.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#saveNewProduct" prefHeight="30.0" prefWidth="100.0" text="Fertigstellen">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancelEdit" layoutX="75.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Abbrechen">
+      <Button fx:id="cancelAdd" layoutX="75.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Abbrechen">
          <font>
             <Font size="14.0" />
          </font>
@@ -28,7 +28,7 @@
       <Text layoutX="52.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
       <Text layoutX="52.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductName" />
       <Text layoutX="52.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" />
-      <Text layoutX="99.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt bearbeiten">
+      <Text layoutX="97.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt hinzufügen">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
