@@ -96,6 +96,7 @@ public class Product implements Displayable {
         return true;
     }
 
+    // Maybe add a column viewable or something like that to the database
     // Method to delete a Product row from the database based on ProductID
     public void delete(int productID) {
         DatabaseConnection connectNow = new DatabaseConnection();
