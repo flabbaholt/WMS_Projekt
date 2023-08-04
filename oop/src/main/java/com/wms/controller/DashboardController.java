@@ -30,10 +30,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.fxml.Initializable;
-import javafx.util.Callback;
 
 //This class is the controller for the dashboard.fxml file - it handles all the events that occur in the dashboard view
 public class DashboardController implements Initializable {
