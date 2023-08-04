@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableView;
@@ -151,6 +152,7 @@ public class DashboardController implements Initializable {
     Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
         openEditProductWindow(selectedProduct);
+        updateTableData();
         }
     }
 
@@ -178,6 +180,50 @@ public class DashboardController implements Initializable {
     }
     
 
+    //Update Table
+    @FXML
+    private void handleRefreshDataButtonClicked(ActionEvent event) {
+        // Call the method to update the table data
+        updateTableData();
+    }
+
+    // Method to update the table data
+    private void updateTableData() {
+        // Clear the current data in the ObservableList
+        productSearchModelObservableList.clear();
+
+        // Perform the database query and populate the ObservableList with the updated data
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connection = connectNow.getDBConnection();
+
+        // SQL Query - Executed in the database
+        String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, ProductName, Manufacturer, arrivalTime FROM Product";
+
+        // Try to execute the query - if it fails, print the stack trace
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet queryOutput = statement.executeQuery(productViewQuery);
+
+            // Iterate through the query output and create Product objects
+            while (queryOutput.next()) {
+                Integer queryProductID = queryOutput.getInt("ProductID");
+                String queryProductNumber = queryOutput.getString("ProductNumber");
+                String queryStellplatzID = queryOutput.getString("StellplatzID");
+                String queryProductName = queryOutput.getString("ProductName");
+                String queryManufacturer = queryOutput.getString("Manufacturer");
+                String queryArrivalTime = queryOutput.getString("arrivalTime");
+
+                // Populate the ObservableList
+                productSearchModelObservableList.add(new Product(queryProductID, queryProductNumber, queryStellplatzID, queryProductName, queryManufacturer, queryArrivalTime));
+            }
+
+            // The rest of the code to set the cell factory and update the table remains the same
+
+        } catch (SQLException e) {
+            Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+    }
     
 
     //Method to return to the main menu
