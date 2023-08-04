@@ -96,6 +96,30 @@ public class Product implements Displayable {
         return true;
     }
 
+    // Method to delete a Product row from the database based on ProductID
+    public void delete(int productID) {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection con = connectNow.getDBConnection();
+
+        // Get the database connection
+        try (Connection connection = con) {
+            // Prepare the delete query
+            String query = "DELETE FROM Product WHERE ProductID=?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, productID);
+
+            // Execute the delete query
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted == 1) {
+                System.out.println("Product with ProductID " + productID + " deleted successfully!");
+            } else {
+                System.out.println("Failed to delete product with ProductID " + productID + ".");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error deleting product: " + e.getMessage());
+        }
+    }
+
     // Method to update the Product data in the database
     public void update() {
         DatabaseConnection connectNow = new DatabaseConnection();

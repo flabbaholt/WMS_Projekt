@@ -144,6 +144,7 @@ public class DashboardController implements Initializable {
     //EditProduct Code
     private Stage editProductStage;
 
+    //FXMl-Methode, die den edit_product Button handled. Es soll der view: EditProduct aufgerufen werden
     @FXML
     private void handleEditProductButtonClicked(MouseEvent event) {
     Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
@@ -176,7 +177,7 @@ public class DashboardController implements Initializable {
         }
     }
     
-
+    //FXMl-Methode, die den refresh Button handled. Es soll die Tabelle aktualisiert werden
     //Update Table Button
     @FXML
     private void handleRefreshDataButtonClicked(ActionEvent event) {
@@ -184,13 +185,12 @@ public class DashboardController implements Initializable {
         updateTableData();
     }
 
-    //FXMl-Methode, die den edit_product Button handled. Es soll der view: EditProduct aufgerufen werden
     // Method to update the table data
     private void updateTableData() {
         // Clear the current data in the ObservableList
         productSearchModelObservableList.clear();
 
-        // Perform the database query and populate the ObservableList with the updated data
+        // Perform the database query
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connection = connectNow.getDBConnection();
 
@@ -223,10 +223,17 @@ public class DashboardController implements Initializable {
         }
     }
     
-
+    //FXMl-Methode, die den delete product Button handled. Es soll das Produkt gelöscht werden
+    //Method to delete the current product
+    @FXML
+    private void handleDeleteProductButtonClicked(MouseEvent event) {
+        Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            selectedProduct.delete(selectedProduct.getProductID());
+            updateTableData();
+        }
+    }
     //Method to return to the main menu
-
-    //Method to update the product
 
     //Method to delete the product
 
