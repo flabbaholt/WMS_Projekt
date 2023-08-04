@@ -21,8 +21,6 @@
       <TextField fx:id="amountField" layoutX="176.0" layoutY="214.0" prefWidth="150.0" />
       <TextField fx:id="stellplatzIDField" layoutX="176.0" layoutY="175.0" prefWidth="150.0" />
       <TextField fx:id="productNumberField" layoutX="176.0" layoutY="138.0" prefWidth="150.0" />
-      <TextField fx:id="productIDField" layoutX="176.0" layoutY="100.0" prefWidth="150.0" />
-      <Text layoutX="52.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductID" />
       <Text layoutX="52.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductNumber" />
       <Text layoutX="52.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StellplatzID" />
       <Text layoutX="52.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
