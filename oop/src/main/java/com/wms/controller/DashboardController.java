@@ -250,6 +250,8 @@ public class DashboardController implements Initializable {
         if (selectedProduct != null) {
             selectedProduct.delete(selectedProduct.getProductID());
             updateTableData();
+
+            //DB Aktionen fehlen
         }
     }
     //Method to return to the main menu
@@ -266,12 +268,6 @@ public class DashboardController implements Initializable {
     @FXML
     public void handleAddShelfButtonClicked(MouseEvent event){
         openAddWindow("Add_Shelf");
-    }
-
-    //FXMl-Methode, die den add_shelfspace Button handled. Es soll der view: Add_ShelfSpace aufgerufen werden
-    @FXML
-    public void handleAddShelfSpaceButtonClicked(MouseEvent event){
-        openAddWindow("Add_ShelfSpace");
     }
     //FXMl-Methode, die den add_product Button handled. Es soll der view: Add_Product aufgerufen werden
     @FXML

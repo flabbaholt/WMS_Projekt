@@ -10,8 +10,6 @@ public class Hangar implements Displayable {
     private String hangar_identification;
     private String hangar_size;
     private Shelf[] containing_Shelfs;
-    private boolean hangar_secured = true;
-
     //wichtig: ersten Buchstaben immer groß schreiben
     private String[] attributes = {"Lagerstandort_id","Hangar_identification","Hangar_size","Hangar_secured"};
 
@@ -29,9 +27,6 @@ public class Hangar implements Displayable {
     public void setHangar_identification(String hangar_identification) {
         this.hangar_identification = hangar_identification;
     }
-    public void setHangar_secured(boolean hangar_secured) {
-        this.hangar_secured = hangar_secured;
-    }
     public void setHangar_size(String hangar_size) {
         this.hangar_size = hangar_size;
     }
@@ -45,9 +40,6 @@ public class Hangar implements Displayable {
     }
     public String getHangar_identification() {
         return hangar_identification;
-    }
-    public boolean getHangar_secured(){
-        return hangar_secured;
     }
     public String getHangar_size() {
         return hangar_size;

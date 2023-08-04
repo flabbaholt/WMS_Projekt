@@ -1,24 +1,27 @@
 package com.wms.controller;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.wms.model.Hangar;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class HangarController {
+public class HangarController implements Initializable {
 
     @FXML
     protected TextField hangerIdentification;
     @FXML
     protected TextField hangerSize;
 
-    
     @FXML
     public void handleHinzufuegenButtonClicked(ActionEvent event){
         System.out.println(">> Add button was pressed");
@@ -53,5 +56,11 @@ public class HangarController {
         }
         
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'initialize'");
     }
 }

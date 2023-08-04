@@ -6,7 +6,6 @@ import com.wms.util.Displayer;
 public class Shelf implements Displayable{
 
     private int id;
-    private int room_id;
     private String shelfIdentification;
     private String shelfCatagory;
     private String shelfCapacity;
