@@ -6,6 +6,7 @@ module com.wms {
 
     exports com.wms;
     exports com.wms.controller;
+    exports com.wms.model;
 
     opens com.wms to javafx.fxml;
     opens com.wms.controller to javafx.fxml;
