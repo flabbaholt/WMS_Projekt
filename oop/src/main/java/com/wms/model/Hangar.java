@@ -1,5 +1,10 @@
 package com.wms.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
 import com.wms.util.Displayer;
 
@@ -8,26 +13,22 @@ public class Hangar implements Displayable {
     //private int id;
     private int lagerstandort_id; //noch nicht final
     private String hangar_identification;
-    private String hangar_size;
-    private Shelf[] containing_Shelfs;
+    private float hangar_size;
     //wichtig: ersten Buchstaben immer groß schreiben
     private String[] attributes = {"Lagerstandort_id","Hangar_identification","Hangar_size","Hangar_secured"};
 
     //Konstruktor es fehlt noch containing Rooms die lagerstandort_id muss dann auch entfernt werden
-    public Hangar(String haId, String haSi){
+    public Hangar(String haId, float haSi){
         System.out.println(">> Konstruktor-Hangar");
         this.hangar_identification = haId;
         this.hangar_size = haSi;
     }
 
     //Set-Methods
-    public void setContaining_Shelfs(Shelf[] containing_Shelfs) {
-        this.containing_Shelfs = containing_Shelfs;
-    }
     public void setHangar_identification(String hangar_identification) {
         this.hangar_identification = hangar_identification;
     }
-    public void setHangar_size(String hangar_size) {
+    public void setHangar_size(float hangar_size) {
         this.hangar_size = hangar_size;
     }
     public void setLagerstandort_id(int lagerstandort_id) {
@@ -35,13 +36,10 @@ public class Hangar implements Displayable {
     }
 
     //Get-Methods
-    public Shelf[] getContaining_Shelfs() {
-        return containing_Shelfs;
-    }
     public String getHangar_identification() {
         return hangar_identification;
     }
-    public String getHangar_size() {
+    public float getHangar_size() {
         return hangar_size;
     }
     public int getLagerstandort_id() {
@@ -71,6 +69,24 @@ public class Hangar implements Displayable {
     }
 
     //add to DB
+    public void addToDB(){
+
+        String value1 = getHangar_identification();
+        float value2 = getHangar_size();
+
+        String sql = "INSERT INTO Hangar (Hangar_Identification, Hangar_Size) VALUES (?, ?)";
+
+        try (Connection conn = SQL.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, value1);
+            pstmt.setFloat(2, value2);
+            pstmt.executeUpdate();
+
+            SQL.disconnect(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
  
     //update in DB
 

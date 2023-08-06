@@ -66,6 +66,19 @@ public abstract class SQL {
         }
     }
 
+    public static void disconnect(Connection modelCon){
+        try{
+            modelCon.close();
+            modelCon = null;
+            System.out.println("Disconnected from MySQL!");
+        }
+        catch (Exception e){
+            System.out.println("Already disconnected from Mysql");
+        }
+    }
+
+
+
     public static ResultSet query(String query, Object ...parameters) throws SQLException{
         if (con == null)
             throw new SQLException("Not connected to Mysql");
@@ -132,4 +145,20 @@ public abstract class SQL {
             }
         }
     }
+
+    public static Connection getConnection(){
+        try {
+            System.out.println("Connecting to MySQL");
+
+            con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
+            System.out.println("MySQL connected!");
+        }
+        catch (Exception e){
+            System.out.println("Could not connect to MySQL");
+            e.printStackTrace();
+        }
+
+        return con;
+    }
+
 }
