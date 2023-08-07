@@ -13,7 +13,7 @@ import com.wms.model.interfaces.Displayable;
 import com.wms.util.Displayer;
 
 public class Shelf implements Displayable{
-
+    private int id;
     private int id_hangar;
     private String shelfIdentification;
     private String shelfCatagory;
@@ -152,12 +152,12 @@ public class Shelf implements Displayable{
 
 
     public void addToDB(){
+
         int value1 = getIdHangar();
         String value2 = getShelfIdentification();
         int value3 = getShelfCapacity();
         String value4 = getShelfType();
         String value5 = getShelfCatagory();
-
 
         String sql = "INSERT INTO Shelf (ID_HANGAR, Shelf_Identification, Max_Capacity, Type, Category) VALUES (?, ?, ?, ?, ?)";
 
@@ -174,8 +174,19 @@ public class Shelf implements Displayable{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        createAllShelfSpaces();
     }
 
+    public void createAllShelfSpaces(){
+        
+        for(int i=0; i<this.shelfCapacity;i++){
+            //bestimmt den Namen der Stellplaetze indem Regalname+ _ + Wert von i
+            String tempName = this.shelfIdentification + "_"+ i;
+            ShelfSpace s = new ShelfSpace(getIDfromDB(),tempName);
+            s.addToDB();
+        }
+    }
+    
     public List<String> getHangarNames() {
         List<String> hangarNames = new ArrayList<>();
 
@@ -191,5 +202,34 @@ public class Shelf implements Displayable{
         }
 
         return hangarNames;
+    }
+
+    public int getIDfromDB(){
+
+        int result = -1;
+        String sql = "SELECT * FROM Shelf WHERE Shelf_Identification = ?";
+        System.out.println(this.shelfIdentification);
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, this.shelfIdentification);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getInt("ID");
+                System.out.println(result);
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }

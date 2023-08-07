@@ -1,5 +1,10 @@
 package com.wms.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
 import com.wms.util.Displayer;
 
@@ -9,25 +14,20 @@ public class ShelfSpace implements Displayable{
     private int shelf_id;
     private String spaceIdentification;
     private boolean spaceOccupied;
-    private String sizeLimit;
-    private String weightLimit;
+    
 
     private ShelfSpace objectInstance;
 
     //erste Buchstabe groß
     private String[] attributes = {"SpaceIdentification","SpaceOccupied","SizeLimit","WeightLimit"};
 
-     //Definition des Konstruktors mit den Werten
-     public ShelfSpace(String spId, boolean spOc, String siLi, String weLi){
-        System.out.println("--- Model ---");
-        System.out.println(">> Konstruktor-ShelfSpace");
+    //Definition des Konstruktors mit den Werten
+    public ShelfSpace(int shelf_id, String spId){
 
+        this.shelf_id = shelf_id;
         this.spaceIdentification = spId;
-        this.spaceOccupied = spOc;
-        this.sizeLimit = siLi;
-        this.weightLimit = weLi;
-
-        createInternObject(spaceIdentification, spaceOccupied, sizeLimit, weightLimit);
+        this.spaceOccupied = false;
+        
     }
 
      //Konstruktor mit String-Array
@@ -39,61 +39,33 @@ public class ShelfSpace implements Displayable{
 
         this.spaceIdentification = data[0];
         this.spaceOccupied = data[1] != null;
-        this.sizeLimit = data[2];
-        this.weightLimit = data[3];
+        
 
-        createInternObject(spaceIdentification, spaceOccupied, sizeLimit, weightLimit);
-    }
-
-    public ShelfSpace(String spId, boolean spOc, String siLi, String weLi, boolean duplicated){
-
-        System.out.println(">> Konstruktor-ShelfSpace");
-
-        this.spaceIdentification = spId;
-        this.spaceOccupied = spOc;
-        this.sizeLimit = siLi;
-        this.weightLimit = weLi;
+       // createInternObject(spaceIdentification, spaceOccupied, sizeLimit, weightLimit);
     }
 
     //Set-Methoden
+    public void setShelfId(int id){
+        this.shelf_id = id;
+    }
+
     public void setSpaceIdentifiaction(String spaceIdentification) {
         this.spaceIdentification = spaceIdentification;
     }
     public void setSpaceOccupied(boolean spaceOccupied) {
         this.spaceOccupied = spaceOccupied;
     }
-    public void setSizeLimit(String sizeLimit) {
-        this.sizeLimit = sizeLimit;
-    }
-    public void setWeightLimit(String weightLimit) {
-        this.weightLimit = weightLimit;
-    }
    
     //Get-Methoden
+    public int getShelfID(){
+        return shelf_id;
+    }
     public String getSpaceIdentification() {
         return spaceIdentification;
     }
     public boolean getSpaceOccupied() {
         return spaceOccupied;
     }
-    public String getSizeLimit() {
-        return sizeLimit;
-    }
-    public String getWeightLimit() {
-        return weightLimit;
-    }
-    
-    //Overloaded
-    public void createInternObject(String spId, boolean spOc, String siLi, String weLi){
-        System.out.println("--- Model ---");
-        System.out.println(">> Objekt-Values werden gesetted");
-
-        ShelfSpace tempObject = new ShelfSpace(spId, spOc, siLi, weLi, true);
-        objectInstance = tempObject;
-        display();
-    }
-
-    //Overloaded
 
     @Override
     public String[] getAttributes() {
@@ -113,6 +85,26 @@ public class ShelfSpace implements Displayable{
 
     public void isObjectNull(){
         System.out.println(objectInstance==null);
+    }
+
+    public void addToDB(){
+
+        int value1 = getShelfID();
+        String value2 = getSpaceIdentification();
+        boolean value3 = getSpaceOccupied();
+        String sql = "INSERT INTO ShelfSpace (ID_SHELF, Space_Identification, Space_Occupied) VALUES (?, ?, ?)";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, value1);
+            pstmt.setString(2, value2);
+            pstmt.setBoolean(3, value3);
+            pstmt.executeUpdate();
+
+            SQL.disconnect(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
 }
