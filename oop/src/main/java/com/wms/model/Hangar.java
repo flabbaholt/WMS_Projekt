@@ -2,6 +2,7 @@ package com.wms.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.wms.SQL;
@@ -24,6 +25,10 @@ public class Hangar implements Displayable {
         this.hangar_size = haSi;
     }
 
+
+    public Hangar (String haID){
+        this.hangar_identification = haID;
+    }
     //Set-Methods
     public void setHangar_identification(String hangar_identification) {
         this.hangar_identification = hangar_identification;
@@ -88,6 +93,33 @@ public class Hangar implements Displayable {
         }
     }
  
+    public int getIDfromDB(){
+
+        int result = -1;
+        String sql = "SELECT * FROM Hangar WHERE Hangar_Identification = ?";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, this.hangar_identification);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getInt("ID");
+                System.out.println(result);
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     //update in DB
 
     //delete in DB

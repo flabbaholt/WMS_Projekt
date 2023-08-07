@@ -6,7 +6,7 @@ public class LiquidShelf extends Shelf {
         private String liquidCapacity;
         private String liquidUsedCapacity;
     
-        public LiquidShelf(String shIde, String shCat, String shCap, String ocCap, String shTyp, String shCon, String liqTyp, String liqCap, String liqOccCap) {
+        public LiquidShelf(String shIde, String shCat, int shCap, String ocCap, String shTyp, String shCon, String liqTyp, String liqCap, String liqOccCap) {
             super(shIde, shCat, shCap, ocCap, shTyp, shCon);
             this.liquidType = liqTyp;
             this.liquidCapacity = liqCap;
