@@ -275,4 +275,38 @@ public class DashboardController implements Initializable {
         openAddWindow("Add_Product");
     }
 
+    @FXML
+    public void handleProductTableViewMouseClicked(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
+            if (selectedProduct != null) {
+                showDetailedView(selectedProduct);
+            }
+        }
+    }
+    private void showDetailedView(Product selectedProduct) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wms/views/DetailView.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller instance from the loader
+            DetailedViewController detailedViewController = loader.getController();
+
+            if (detailedViewController != null) {
+                // Set the product details in the DetailedViewController
+                detailedViewController.setProductDetails(selectedProduct);
+
+                // Create a new stage for the DetailedView window
+                Stage detailedViewStage = new Stage();
+                detailedViewStage.setTitle("Product Details");
+                detailedViewStage.setScene(new Scene(root));
+                detailedViewStage.show();
+            } else {
+                System.err.println("Failed to load DetailView controller.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

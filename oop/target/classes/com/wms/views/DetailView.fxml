@@ -5,25 +5,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="57.0" layoutY="25.0" prefHeight="17.0" prefWidth="96.0" text="Detailansicht">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="57.0" layoutY="52.0" prefHeight="116.0" prefWidth="361.0">
-         <children>
-            <Label layoutY="14.0" text="ProductID: " />
-            <TextField layoutX="65.0" layoutY="10.0" prefHeight="25.0" prefWidth="59.0" />
-            <Label layoutX="143.0" layoutY="14.0" text="Produkt Nummer:" />
-            <TextField layoutX="246.0" layoutY="10.0" prefHeight="25.0" prefWidth="96.0" />
-            <Label layoutX="1.0" layoutY="46.0" text="Name: " />
-            <TextField layoutX="65.0" layoutY="42.0" prefHeight="25.0" prefWidth="279.0" />
-            <Label layoutX="3.0" layoutY="75.0" text="Hersteller:" />
-            <TextField layoutX="65.0" layoutY="71.0" prefHeight="25.0" prefWidth="279.0" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.DetailedViewController">
+    <children>
+        <Label layoutX="57.0" layoutY="25.0" prefHeight="17.0" prefWidth="96.0" text="Detailansicht">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <AnchorPane layoutX="57.0" layoutY="52.0" prefHeight="240.0" prefWidth="361.0">
+            <children>
+                <Label layoutY="14.0" text="ProductID:" />
+                <TextField fx:id="productIDField" editable="false" layoutX="110.0" layoutY="10.0" prefHeight="25.0" prefWidth="120.0" />
+                <Label layoutY="49.0" text="Produkt Nummer:" />
+                <TextField fx:id="productNumberField" editable="false" layoutX="110.0" layoutY="45.0" prefHeight="25.0" prefWidth="120.0" />
+                <Label layoutY="84.0" text="Stellplatz ID:" />
+                <TextField fx:id="stellplatzIDField" editable="false" layoutX="110.0" layoutY="80.0" prefHeight="25.0" prefWidth="120.0" />
+                <Label layoutY="119.0" text="Name:" />
+                <TextField fx:id="productNameField" editable="false" layoutX="110.0" layoutY="115.0" prefHeight="25.0" prefWidth="279.0" />
+                <Label layoutY="154.0" text="Hersteller:" />
+                <TextField fx:id="manufacturerField" editable="false" layoutX="110.0" layoutY="150.0" prefHeight="25.0" prefWidth="279.0" />
+                <Label layoutY="193.0" text="Arrival Time:" />
+                <TextField fx:id="arrivalTimeField" editable="false" layoutX="110.0" layoutY="189.0" prefHeight="25.0" prefWidth="200.0" />
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>
