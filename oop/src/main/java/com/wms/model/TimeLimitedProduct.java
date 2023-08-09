@@ -34,10 +34,9 @@ public class TimeLimitedProduct extends Product {
         int value3 = this.amount;
         String value4 = this.productName;
         String value5 = this.manufacturer;
-
         String value6 = expiryDate;
 
-        String sql = "INSERT INTO Product (ID_SHELFSPACE, ProductNumber, Amount, ProductName, Manufacturer, ClimateCategory, Temperature, ExpiryDate ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Product (ID_SHELFSPACE, ProductNumber, Amount, ProductName, Manufacturer, ExpiryDate ) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = SQL.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -54,5 +53,9 @@ public class TimeLimitedProduct extends Product {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        ShelfSpace s = new ShelfSpace();
+        s.changeOccupation(shelfSpace_ID);
+        setShelfSpace_Identification(shelfSpace_ID);
     }
 }

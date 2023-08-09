@@ -142,7 +142,31 @@ public class Hangar implements Displayable {
         return hangarNames;
     }
     
-    //update in DB
+    public String getHangerIdentificationFromDB(int Shelf_ID){
+        String result = "";
 
-    //delete in DB
+        String sql = "SELECT * FROM Hangar WHERE ID=?";
+        System.out.println();
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, Shelf_ID);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getString("Hangar_Identification");
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

@@ -263,4 +263,59 @@ public class Shelf implements Displayable{
 
         return result;
     }
+
+    public String getShelfIdentification(int Shelf_ID){
+        String result = "";
+
+        String sql = "SELECT * FROM Shelf WHERE ID=?";
+        System.out.println(this.shelfIdentification);
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, Shelf_ID);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getString("Shelf_Identification");
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public int getHangarID(String shelf_identification){
+        int result = -1;
+
+        String sql = "SELECT * FROM Shelf WHERE Shelf_Identification=?";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, shelf_identification);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getInt("ID_HANGAR");
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

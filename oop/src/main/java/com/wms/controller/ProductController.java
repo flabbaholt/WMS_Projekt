@@ -81,7 +81,7 @@ public class ProductController implements Initializable {
 
 
         if (productType == "Haltbarkeitslimitiert"){
-
+            System.out.println("halt");
             String expDate = expiryDateField.getText();
 
             TimeLimitedProduct prod = new TimeLimitedProduct(amount, productNumber,  shelfSpace_ID, productName,  manufacturer, expDate);
@@ -111,7 +111,6 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("1");
         // Initialize the controller
         hideAllExtraItems();
         submitAdd.setOnAction(event -> saveProduct());
@@ -193,7 +192,6 @@ public class ProductController implements Initializable {
         temperatureText.setVisible(false);
     }
 
-
     @FXML
     public void hangarSelectionChanged(ActionEvent event){
         
@@ -231,5 +229,4 @@ public class ProductController implements Initializable {
     }
 
 
-    
 }
