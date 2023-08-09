@@ -183,11 +183,22 @@ public class Shelf implements Displayable{
 
     public void createAllShelfSpaces(){
         
-        for(int i=0; i<this.shelfCapacity;i++){
-            //bestimmt den Namen der Stellplaetze indem Regalname+ _ + Wert von i
-            String tempName = this.shelfIdentification + "_"+ i;
-            ShelfSpace s = new ShelfSpace(getIDfromDB(),tempName);
-            s.addToDB();
+        if(this.shelfIdentification.length()>=2){
+        
+            for(int i=0; i<this.shelfCapacity;i++){
+                //bestimmt den Namen der Stellplaetze indem Regalname+ _ + Wert von i
+                String tempName = this.shelfIdentification.substring(0, 2) + "-"+ (i+1);
+                ShelfSpace s = new ShelfSpace(getIDfromDB(),tempName);
+                s.addToDB();
+            }
+        }else{
+            for(int i=0; i<this.shelfCapacity;i++){
+                //bestimmt den Namen der Stellplaetze indem Regalname+ _ + Wert von i
+                String tempName = this.shelfIdentification + "-"+ (i+1);
+                ShelfSpace s = new ShelfSpace(getIDfromDB(),tempName);
+                s.addToDB();
+            }
+
         }
     }
 
