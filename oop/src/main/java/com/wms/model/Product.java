@@ -17,10 +17,11 @@ public class Product implements Displayable {
     int productID, amount, shelfSpace_ID;
     String productNumber, productName, manufacturer ,shelfSpace_Identification,stellplatzID,arrivalTime;
 
-    public Product(Integer productID, String productNumber, String stellplatzID, String productName, String manufacturer, String arrivalTime) {
+    public Product(Integer productID, String productNumber, String stellplatzID, int amount, String productName, String manufacturer, String arrivalTime) {
         this.productID = productID;
         this.productNumber = productNumber;
         this.stellplatzID = stellplatzID;
+        this.amount = amount;
         this.productName = productName;
         this.manufacturer = manufacturer;
         this.arrivalTime = arrivalTime;
@@ -30,15 +31,6 @@ public class Product implements Displayable {
         this.amount = amount;
         this.productNumber = productNumber;
         this.shelfSpace_ID = shelfSpace_ID;
-        this.productName = productName;
-        this.manufacturer = manufacturer;
-    }
-
-    //Konstruktor für Dashboard
-    public Product(int queryProductID, String queryProductNumber, String  queryStellplatzID, String queryProductName, String queryManufacturer, int amount) {
-        this.amount = amount;
-        this.productNumber = productNumber;
-        this.shelfSpace_Identification = shelfSpace_Identification;
         this.productName = productName;
         this.manufacturer = manufacturer;
     }
@@ -95,7 +87,7 @@ public class Product implements Displayable {
     }
 
     public int getProductID(){
-        return -1;
+        return this.productID;
     }
     
     public String getShelfSpace_Identification(){

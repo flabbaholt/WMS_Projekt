@@ -44,6 +44,8 @@ public class DashboardController implements Initializable {
     @FXML
     private TableColumn<Product, String> stellplatzIDColumn;
     @FXML
+    private TableColumn<Product, String> amountColumn;
+    @FXML
     private TableColumn<Product, String> productNameColumn;
     @FXML
     private TableColumn<Product, String> manufacturerColumn;
@@ -63,7 +65,7 @@ public class DashboardController implements Initializable {
         Connection connection = connectNow.getDBConnection();
 
         //SQL Query - Executed in the database
-        String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, ProductName, Manufacturer, arrivalTime FROM Product";
+        String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, Amount, ProductName, Manufacturer, arrivalTime FROM Product";
 
         //Try to execute the query - if it fails, print the stack trace
         try{
@@ -76,19 +78,21 @@ public class DashboardController implements Initializable {
                 Integer queryProductID = queryOutput.getInt("ProductID");
                 String queryProductNumber = queryOutput.getString("ProductNumber");
                 String queryStellplatzID = queryOutput.getString("StellplatzID");
+                Integer queryAmount = queryOutput.getInt("Amount");
                 String queryProductName = queryOutput.getString("ProductName");
                 String queryManufacturer = queryOutput.getString("Manufacturer");
                 String queryArrivalTime = queryOutput.getString("arrivalTime");
 
                 //Populate the ObservableList
-                productSearchModelObservableList.add(new Product(queryProductID, queryProductNumber, queryStellplatzID, queryProductName, queryManufacturer, queryArrivalTime));
+                productSearchModelObservableList.add(new Product(queryProductID, queryProductNumber, queryStellplatzID, queryAmount, queryProductName, queryManufacturer, queryArrivalTime));
             }
-
+            	
             //PropertValueFactory - Set the column in the tableview to the correct value
             //The table column name must be the same as the variable name in the model class
             productIDColumn.setCellValueFactory(new PropertyValueFactory<>("productID"));
             productNumberColumn.setCellValueFactory(new PropertyValueFactory<>("productNumber"));
             stellplatzIDColumn.setCellValueFactory(new PropertyValueFactory<>("stellplatzID"));
+            amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
             manufacturerColumn.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
             arrivalTimeColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
@@ -214,7 +218,7 @@ public class DashboardController implements Initializable {
         Connection connection = connectNow.getDBConnection();
 
         // SQL Query - Executed in the database
-        String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, ProductName, Manufacturer, arrivalTime FROM Product";
+        String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, Amount, ProductName, Manufacturer, arrivalTime FROM Product";
 
         // Try to execute the query - if it fails, print the stack trace
         try {
@@ -226,12 +230,13 @@ public class DashboardController implements Initializable {
                 Integer queryProductID = queryOutput.getInt("ProductID");
                 String queryProductNumber = queryOutput.getString("ProductNumber");
                 String queryStellplatzID = queryOutput.getString("StellplatzID");
+                Integer queryAmont = queryOutput.getInt("Amount");
                 String queryProductName = queryOutput.getString("ProductName");
                 String queryManufacturer = queryOutput.getString("Manufacturer");
                 String queryArrivalTime = queryOutput.getString("arrivalTime");
 
                 // Populate the ObservableList
-                productSearchModelObservableList.add(new Product(queryProductID, queryProductNumber, queryStellplatzID, queryProductName, queryManufacturer, queryArrivalTime));
+                productSearchModelObservableList.add(new Product(queryProductID, queryProductNumber, queryStellplatzID, queryAmont, queryProductName, queryManufacturer, queryArrivalTime));
             }
 
             // The rest of the code to set the cell factory and update the table remains the same
