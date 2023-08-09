@@ -2,7 +2,10 @@ package com.wms.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
@@ -30,6 +33,7 @@ public class ShelfSpace implements Displayable{
         
     }
 
+    public ShelfSpace(){}
      //Konstruktor mit String-Array
      public ShelfSpace(String[] data){
 
@@ -44,6 +48,9 @@ public class ShelfSpace implements Displayable{
        // createInternObject(spaceIdentification, spaceOccupied, sizeLimit, weightLimit);
     }
 
+    public ShelfSpace(String spIde){
+        this.spaceIdentification = spIde;
+    }
     //Set-Methoden
     public void setShelfId(int id){
         this.shelf_id = id;
@@ -107,4 +114,93 @@ public class ShelfSpace implements Displayable{
         }
     }
     
+    public List<String> getShelfSapceNames(int shelfID) {
+        List<String> shelfSpaceNames = new ArrayList<>();
+
+        try (Connection connection = SQL.getConnection()){
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Space_Identification FROM ShelfSpace WHERE ID_SHELF=? AND Space_Occupied=?");
+            preparedStatement.setInt(1, shelfID);
+            preparedStatement.setInt(2, 0);
+
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                shelfSpaceNames.add(resultSet.getString("Space_Identification"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return shelfSpaceNames;
+    }
+
+    public int getIDfromDB(){
+
+        int result = -1;
+
+        String sql = "SELECT * FROM ShelfSpace WHERE Space_Identification=?";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, this.spaceIdentification);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getInt("ID");
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public void changeOccupation(int shelfSpace_ID){
+        String sql = "SELECT * FROM ShelfSpace WHERE ID=?";
+
+        boolean result = true;
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, shelfSpace_ID);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getBoolean("Space_Occupied");
+                System.out.println(result);
+                if (result==true){
+                    updateColumnValue(conn, shelfSpace_ID, false );
+                }else{
+                    updateColumnValue(conn, shelfSpace_ID, true );
+
+                }
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateColumnValue(Connection conn, int shelfSpace_ID, boolean newValue) throws SQLException{
+        String updateQuery = "UPDATE ShelfSpace SET Space_Occupied = ? WHERE id = ?";
+        System.out.println(newValue);
+        PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
+        updateStatement.setBoolean(1, newValue);
+        updateStatement.setInt(2, shelfSpace_ID);
+        updateStatement.executeUpdate();
+    }
 }

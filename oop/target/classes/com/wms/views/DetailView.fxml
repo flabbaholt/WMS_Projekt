@@ -12,20 +12,29 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <AnchorPane layoutX="57.0" layoutY="52.0" prefHeight="240.0" prefWidth="361.0">
+        <AnchorPane layoutX="57.0" layoutY="52.0" prefHeight="331.0" prefWidth="389.0">
             <children>
                 <Label layoutY="14.0" text="ProductID:" />
                 <TextField fx:id="productIDField" editable="false" layoutX="110.0" layoutY="10.0" prefHeight="25.0" prefWidth="120.0" />
                 <Label layoutY="49.0" text="Produkt Nummer:" />
                 <TextField fx:id="productNumberField" editable="false" layoutX="110.0" layoutY="45.0" prefHeight="25.0" prefWidth="120.0" />
-                <Label layoutY="84.0" text="Stellplatz ID:" />
-                <TextField fx:id="stellplatzIDField" editable="false" layoutX="110.0" layoutY="80.0" prefHeight="25.0" prefWidth="120.0" />
-                <Label layoutY="119.0" text="Name:" />
-                <TextField fx:id="productNameField" editable="false" layoutX="110.0" layoutY="115.0" prefHeight="25.0" prefWidth="279.0" />
-                <Label layoutY="154.0" text="Hersteller:" />
-                <TextField fx:id="manufacturerField" editable="false" layoutX="110.0" layoutY="150.0" prefHeight="25.0" prefWidth="279.0" />
-                <Label layoutY="193.0" text="Arrival Time:" />
-                <TextField fx:id="arrivalTimeField" editable="false" layoutX="110.0" layoutY="189.0" prefHeight="25.0" prefWidth="200.0" />
+                <Label layoutX="197.0" layoutY="277.0" text="Stellplatz ID:" />
+                <TextField fx:id="stellplatzIDField" editable="false" layoutX="269.0" layoutY="273.0" prefHeight="25.0" prefWidth="120.0" />
+                <Label layoutX="1.0" layoutY="86.0" text="Name:" />
+                <TextField fx:id="productNameField" editable="false" layoutX="110.0" layoutY="82.0" prefHeight="25.0" prefWidth="279.0" />
+                <Label layoutX="1.0" layoutY="125.0" text="Hersteller:" />
+                <TextField fx:id="manufacturerField" editable="false" layoutX="110.0" layoutY="121.0" prefHeight="25.0" prefWidth="279.0" />
+            <Label layoutY="173.0" text="Standort Informationen" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="-2.0" layoutY="242.0" text="Regal:" />
+            <Label layoutX="-2.0" layoutY="203.0" text="Lager" />
+            <Label layoutX="-7.0" layoutY="277.0" text="Stellplatz:" />
+            <TextField fx:id="stellplatz" editable="false" layoutX="62.0" layoutY="273.0" prefHeight="25.0" prefWidth="120.0" />
+            <TextField fx:id="regal" editable="false" layoutX="62.0" layoutY="238.0" prefHeight="25.0" prefWidth="120.0" />
+            <TextField fx:id="lager" editable="false" layoutX="62.0" layoutY="199.0" prefHeight="25.0" prefWidth="120.0" />
             </children>
         </AnchorPane>
     </children>

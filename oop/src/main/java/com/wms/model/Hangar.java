@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
@@ -25,6 +28,7 @@ public class Hangar implements Displayable {
         this.hangar_size = haSi;
     }
 
+    public Hangar(){}
 
     public Hangar (String haID){
         this.hangar_identification = haID;
@@ -118,6 +122,24 @@ public class Hangar implements Displayable {
             e.printStackTrace();
         }
         return result;
+    }
+    
+    //Gibt alle Hangar_Identificationen zurueck
+    public List<String> getHangarNamesFromDB() {
+        List<String> hangarNames = new ArrayList<>();
+
+        try (Connection connection = SQL.getConnection()){
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT Hangar_Identification FROM Hangar");
+
+            while (resultSet.next()) {
+                hangarNames.add(resultSet.getString("Hangar_Identification"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return hangarNames;
     }
     
     //update in DB

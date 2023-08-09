@@ -30,6 +30,5 @@ public class DetailedViewController {
         stellplatzIDField.setText(product.getStellplatzID());
         productNameField.setText(product.getProductName());
         manufacturerField.setText(product.getManufacturer());
-        arrivalTimeField.setText(product.getArrivalTime());
     }
 }

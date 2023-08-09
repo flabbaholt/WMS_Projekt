@@ -37,8 +37,8 @@ public class ShelfController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Shelf shelf = new Shelf();
-        List<String> hangarNames = shelf.getHangarNames();
+        Hangar h = new Hangar();
+        List<String> hangarNames = h.getHangarNamesFromDB();
         selectHangar.getItems().addAll(hangarNames);
 
         //setzt die Dropdown-Werte für Regal-Kategorien

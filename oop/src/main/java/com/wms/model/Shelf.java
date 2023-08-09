@@ -54,6 +54,10 @@ public class Shelf implements Displayable{
         this.setShelfCatagory(shCat);
     }
 
+    public Shelf(String shIde){
+        this.shelfIdentification = shIde;
+    }
+
     public Shelf(){}
     
     //Set-Methoden
@@ -186,28 +190,55 @@ public class Shelf implements Displayable{
             s.addToDB();
         }
     }
-    
-    public List<String> getHangarNames() {
-        List<String> hangarNames = new ArrayList<>();
+
+    //sucht alle Regal Identifikationen raus, die zu der Hangar ID passen
+    public List<String> getShelfNames(int hangar_ID) {
+        
+        List<String> shelfNames = new ArrayList<>();
 
         try (Connection connection = SQL.getConnection()){
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT Hangar_Identification FROM Hangar");
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Shelf_Identification FROM Shelf WHERE ID_HANGAR=?");
+            preparedStatement.setInt(1, hangar_ID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                hangarNames.add(resultSet.getString("Hangar_Identification"));
+                shelfNames.add(resultSet.getString("Shelf_Identification"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return hangarNames;
+        return shelfNames;
+        
+    }
+    public List<String> getShelfNames() {
+        
+        List<String> shelfNames = new ArrayList<>();
+
+        try (Connection connection = SQL.getConnection()){
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Shelf_Identification FROM Shelf ");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                shelfNames.add(resultSet.getString("Shelf_Identification"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return shelfNames;
+        
     }
 
     public int getIDfromDB(){
 
         int result = -1;
-        String sql = "SELECT * FROM Shelf WHERE Shelf_Identification = ?";
+
+        String sql = "SELECT * FROM Shelf WHERE Shelf_Identification=?";
         System.out.println(this.shelfIdentification);
 
         try (Connection conn = SQL.getConnection();

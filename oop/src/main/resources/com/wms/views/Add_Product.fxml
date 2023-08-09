@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"> <!-- fx:controller="com.wms.controller.ProductController"!-->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.ProductController">
    <children>
-      <Button fx:id="submitAdd" layoutX="225.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Fertigstellen">
+      <Button fx:id="submitAdd" layoutX="238.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Fertigstellen">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancelAdd" layoutX="75.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Abbrechen">
+      <Button fx:id="cancelAdd" layoutX="82.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Abbrechen">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="amountField" layoutX="176.0" layoutY="214.0" prefWidth="150.0" />
-      <TextField fx:id="stellplatzIDField" layoutX="176.0" layoutY="175.0" prefWidth="150.0" />
-      <TextField fx:id="productNumberField" layoutX="176.0" layoutY="138.0" prefWidth="150.0" />
-      <Text layoutX="52.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductNumber" />
-      <Text layoutX="52.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StellplatzID" />
-      <Text layoutX="52.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
-      <Text layoutX="52.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductName" />
-      <Text layoutX="52.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" />
+      <TextField fx:id="productNameField" layoutX="124.0" layoutY="122.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="manufacturerField" layoutX="124.0" layoutY="154.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="productNumberField" layoutX="126.0" layoutY="88.0" prefHeight="25.0" prefWidth="100.0" />
+      <Text layoutX="24.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt Nummer" />
+      <Text layoutX="128.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="244.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl" />
+      <Text layoutX="24.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt Name" />
+      <Text layoutX="24.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hersteller" />
       <Text layoutX="97.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt hinzufügen">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="productNameField" layoutX="176.0" layoutY="247.0" prefWidth="150.0" />
-      <TextField fx:id="manufacturerField" layoutX="176.0" layoutY="279.0" prefWidth="150.0" />
+      <TextField fx:id="expiryDateField" layoutX="125.0" layoutY="221.0" prefHeight="25.0" prefWidth="213.0" promptText="tt.mm.jjjj" />
+      <TextField fx:id="amountField" layoutX="288.0" layoutY="88.0" prefHeight="25.0" prefWidth="47.0" />
+      <Text layoutX="24.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt Art" />
+      <ComboBox fx:id="productTypeDropDown" layoutX="125.0" layoutY="188.0" onAction="#handleProductTypeButton" prefHeight="25.0" prefWidth="213.0" />
+      <Text fx:id="expiryDateText" layoutX="24.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ablaufdatum" />
+      <Text fx:id="temperatureText" layoutX="24.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatur" />
+      <TextField fx:id="temperatureField" layoutX="125.0" layoutY="301.0" prefHeight="25.0" prefWidth="100.0" />
+      <ComboBox fx:id="climateCategoryDropDown" layoutX="125.0" layoutY="260.0" prefHeight="25.0" prefWidth="213.0" />
+      <Text fx:id="climateCategoryText" layoutX="20.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klima Kategorie" />
+      <Text layoutX="139.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standort festlegen">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="hangarText" layoutX="27.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hangar:" />
+      <ComboBox fx:id="hangarDropDown" layoutX="86.0" layoutY="380.0" onAction="#hangarSelectionChanged" prefHeight="25.0" prefWidth="92.0" />
+      <Text fx:id="shelfText" layoutX="206.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regale:" />
+      <ComboBox fx:id="shelfDropDown" layoutX="255.0" layoutY="380.0" onAction="#shelfSelectionChanged" prefHeight="25.0" prefWidth="83.0" />
+      <Text fx:id="shelfSpaceText" layoutX="19.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stellplätze:" />
+      <ComboBox fx:id="shelfSpaceDropDown" layoutX="86.0" layoutY="414.0" prefHeight="25.0" prefWidth="92.0" />
    </children>
 </AnchorPane>

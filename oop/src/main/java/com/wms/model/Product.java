@@ -2,16 +2,20 @@ package com.wms.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.wms.DatabaseConnection;
+import com.wms.SQL;
 import com.wms.model.interfaces.Displayable;
 
 public class Product implements Displayable {
     
-    Integer productID;
-    String productNumber, stellplatzID, productName, manufacturer, arrivalTime;
-
+    int productID, amount, shelfSpace_ID;
+    String productNumber, productName, manufacturer ,shelfSpace_Identification,stellplatzID,arrivalTime;
 
     public Product(Integer productID, String productNumber, String stellplatzID, String productName, String manufacturer, String arrivalTime) {
         this.productID = productID;
@@ -22,13 +26,40 @@ public class Product implements Displayable {
         this.arrivalTime = arrivalTime;
     }
 
-
-    public Integer getProductID() {
-        return this.productID;
+    public Product(int amount, String productNumber, int shelfSpace_ID, String productName, String manufacturer) {
+        this.amount = amount;
+        this.productNumber = productNumber;
+        this.shelfSpace_ID = shelfSpace_ID;
+        this.productName = productName;
+        this.manufacturer = manufacturer;
     }
 
-    public void setProductID(Integer productID) {
-        this.productID = productID;
+    //Konstruktor für Dashboard
+    public Product(int queryProductID, String queryProductNumber, String  queryStellplatzID, String queryProductName, String queryManufacturer, int amount) {
+        this.amount = amount;
+        this.productNumber = productNumber;
+        this.shelfSpace_Identification = shelfSpace_Identification;
+        this.productName = productName;
+        this.manufacturer = manufacturer;
+    }
+
+    public String getStellplatzID() {
+        return this.stellplatzID;
+    }
+
+    public void setStellplatzID(String stellplatzID) {
+        this.stellplatzID = stellplatzID;
+    } 
+    public String getArrivalTime() {
+        return this.arrivalTime;
+    }
+
+    public Integer getAmount() {
+        return this.amount;
+    }
+
+    public void setAmout(int amount) {
+        this.amount = amount;
     }
 
     public String getProductNumber() {
@@ -39,12 +70,12 @@ public class Product implements Displayable {
         this.productNumber = productNumber;
     }
 
-    public String getStellplatzID() {
-        return this.stellplatzID;
+    public int getshelfSpace_ID() {
+        return this.shelfSpace_ID;
     }
 
-    public void setStellplatzID(String stellplatzID) {
-        this.stellplatzID = stellplatzID;
+    public void setshelfSpace_ID(int shelfSpace_ID) {
+        this.shelfSpace_ID = shelfSpace_ID;
     }
 
     public String getProductName() {
@@ -63,39 +94,22 @@ public class Product implements Displayable {
         this.manufacturer = manufacturer;
     }
 
-    public String getArrivalTime() {
-        return this.arrivalTime;
+    public int getProductID(){
+        return -1;
+    }
+    
+    public String getShelfSpace_Identification(){
+        return this.shelfSpace_Identification;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setShelfSpace_Identification(String shelfSpace_Identification){
+        this.shelfSpace_Identification = shelfSpace_Identification;
     }
-
-    // todo
-    private boolean checkInput() {
-        if(this.productID >= 0 || this.stellplatzID == null) {
-            return false;
-        } else if(this.productName ==null) {
-            return false;
-        } else if(this.manufacturer == null) {
-            return false;
-        } else if(arrivalTime == null) {
-            return false;
-        } else {
-            return true;
-        }
-        
+    
+    public void setProductID(int pID){
+        this.productID = pID;
     }
-    // todo
-    private void getAllLocationIDs() {
-        //code 
-    }
-    // todo
-    private boolean checkOut() {
-        // code
-        return true;
-    }
-
+    
     // Maybe add a column viewable or something like that to the database
     // Method to delete a Product row from the database based on ProductID
     public void delete(int productID) {
@@ -148,7 +162,111 @@ public class Product implements Displayable {
         }
     }
 
+    public void addToDB(String climateCategory, double temperature, String expiryDate ){
 
+        int value1 = this.shelfSpace_ID;
+        String value2 = this.productNumber;
+        int value3 = this.amount;
+        String value4 = this.productName;
+        String value5 = this.manufacturer;
+
+        String value6 = climateCategory;
+        double value7 = temperature;
+        String value8 = expiryDate;
+
+        String sql = "INSERT INTO Product (ID_SHELFSPACE, ProductNumber, Amount, ProductName, Manufacturer, ClimateCategory, Temperature, ExpiryDate ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, value1);
+            pstmt.setString(2, value2);
+            pstmt.setInt(3, value3);
+            pstmt.setString(4, value4);
+            pstmt.setString(5, value5);
+            pstmt.setString(6, value6);
+            pstmt.setDouble(7, value7);
+            pstmt.setString(8, value8);
+            pstmt.executeUpdate();
+
+            SQL.disconnect(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addToDB(){
+
+        int value1 = this.shelfSpace_ID;
+        String value2 = this.productNumber;
+        int value3 = this.amount;
+        String value4 = this.productName;
+        String value5 = this.manufacturer;
+
+        String sql = "INSERT INTO Product (ID_SHELFSPACE, ProductNumber, Amount, ProductName, Manufacturer) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, value1);
+            pstmt.setString(2, value2);
+            pstmt.setInt(3, value3);
+            pstmt.setString(4, value4);
+            pstmt.setString(5, value5);
+            pstmt.executeUpdate();
+
+            SQL.disconnect(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ShelfSpace s = new ShelfSpace();
+        s.changeOccupation(shelfSpace_ID);
+        setShelfSpace_Identification(shelfSpace_ID);
+    }
+
+    public void setShelfSpace_Identification(int shelfSpace_ID){
+
+        String sql = "SELECT Space_Identification FROM ShelfSpace WHERE id = ?";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, shelfSpace_ID);
+
+            ResultSet resultSet = pstmt.executeQuery();
+
+
+            String valueToInsert = "";
+            if (resultSet.next()) {
+                valueToInsert = resultSet.getString("Space_identification");
+            }
+
+            String insertQuery = "UPDATE Product SET StellplatzID = ? WHERE ID_SHELFSPACE = ?";
+            PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
+            insertStatement.setString(1, valueToInsert);
+            insertStatement.setInt(2, shelfSpace_ID);
+            insertStatement.executeUpdate();
+
+            SQL.disconnect(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public List<String> getShelfSpaces(int regalID) {
+        List<String> hangarNames = new ArrayList<>();
+
+        try (Connection connection = SQL.getConnection()){
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT Hangar_Identification FROM Hangar");
+
+            while (resultSet.next()) {
+                hangarNames.add(resultSet.getString("Hangar_Identification"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return hangarNames;
+    }
     
     @Override
     public String[] getAttributes() {
@@ -162,5 +280,4 @@ public class Product implements Displayable {
         throw new UnsupportedOperationException("Unimplemented method 'display'");
     }
 
-    //Produktklasse
 }
