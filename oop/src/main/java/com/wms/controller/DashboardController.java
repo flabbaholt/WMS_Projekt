@@ -12,6 +12,7 @@ import java.util.logging.Level;
 
 import com.wms.DatabaseConnection;
 import com.wms.model.Product;
+import com.wms.model.ShelfSpace;
 import com.wms.util.StringUtils;
 
 import javafx.collections.FXCollections;
@@ -63,7 +64,6 @@ public class DashboardController implements Initializable {
         
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connection = connectNow.getDBConnection();
-
         //SQL Query - Executed in the database
         String productViewQuery = "SELECT ProductID, ProductNumber, StellplatzID, Amount, ProductName, Manufacturer, arrivalTime FROM Product";
 
@@ -254,6 +254,11 @@ public class DashboardController implements Initializable {
         Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
             selectedProduct.delete(selectedProduct.getProductID());
+
+            //Die ShelfSpace Occupation wird von besetzt zu frei
+            ShelfSpace s = new ShelfSpace();
+            String stellplatz_id = selectedProduct.getStellplatzID();
+            s.changeOccupation(s.getShelfSpaceIDfromDB(stellplatz_id));
             updateTableData();
 
             //DB Aktionen fehlen

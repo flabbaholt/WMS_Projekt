@@ -191,8 +191,37 @@ public class ShelfSpace implements Displayable{
         return result;
     }
 
+    public int getShelfSpaceIDfromDB(String shelfSpace_Identification){
+        int result = -1;
+
+        String sql = "SELECT * FROM ShelfSpace WHERE Space_Identification=?";
+
+        try (Connection conn = SQL.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, shelfSpace_Identification);
+            ResultSet resultSet = pstmt.executeQuery();
+            
+            if (resultSet.next()) {
+                result = resultSet.getInt("ID");
+            }else{ 
+                System.out.println("No Data found");
+            }
+
+            resultSet.close();
+            pstmt.close();
+            SQL.disconnect(conn);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public void changeOccupation(int shelfSpace_ID){
         String sql = "SELECT * FROM ShelfSpace WHERE ID=?";
+
+        System.out.println(shelfSpace_ID);
 
         boolean result = true;
         try (Connection conn = SQL.getConnection();
@@ -202,6 +231,7 @@ public class ShelfSpace implements Displayable{
             
             if (resultSet.next()) {
                 result = resultSet.getBoolean("Space_Occupied");
+                System.out.println(result);
                 if (result==true){
                     updateColumnValue(conn, shelfSpace_ID, false );
                 }else{

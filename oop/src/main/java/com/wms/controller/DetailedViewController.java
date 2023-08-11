@@ -8,6 +8,7 @@ import com.wms.model.Product;
 import com.wms.model.Shelf;
 import com.wms.model.ShelfSpace;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +23,8 @@ public class DetailedViewController implements Initializable{
     @FXML
     private TextField stellplatzIDField;
     @FXML
+    private TextField amountField;
+    @FXML
     private TextField productNameField;
     @FXML
     private TextField manufacturerField;
@@ -32,14 +35,13 @@ public class DetailedViewController implements Initializable{
 
     @FXML
     private Button cancelButton;
-    @FXML
-    private Button checkOutProductButton;
 
 
     public void setProductDetails(Product product) {
         productIDField.setText(String.valueOf(product.getProductID()));
         productNumberField.setText(product.getProductNumber());
         stellplatzIDField.setText(product.getStellplatzID());
+        amountField.setText(String.valueOf(product.getAmount()));
         productNameField.setText(product.getProductName());
         manufacturerField.setText(product.getManufacturer());
         regal.setText(getShelfIdentification(product.getStellplatzID()));
@@ -66,8 +68,6 @@ public class DetailedViewController implements Initializable{
         Hangar h = new Hangar();
         return h.getHangerIdentificationFromDB(hangar_ID);
     }
-
-    
 
     private void closeWindow() {
         // Close the window (Stage) when the cancel button is clicked

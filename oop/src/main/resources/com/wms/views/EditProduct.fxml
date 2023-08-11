@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -19,15 +20,14 @@
          </font>
       </Button>
       <TextField fx:id="amountField" layoutX="176.0" layoutY="214.0" prefWidth="150.0" />
-      <TextField fx:id="stellplatzIDField" layoutX="176.0" layoutY="175.0" prefWidth="150.0" />
       <TextField fx:id="productNumberField" layoutX="176.0" layoutY="138.0" prefWidth="150.0" />
       <TextField fx:id="productIDField" layoutX="176.0" layoutY="100.0" prefWidth="150.0" />
       <Text layoutX="52.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductID" />
-      <Text layoutX="52.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductNumber" />
-      <Text layoutX="52.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StellplatzID" />
-      <Text layoutX="52.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
-      <Text layoutX="52.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductName" />
-      <Text layoutX="52.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" />
+      <Text layoutX="52.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt Nummer" />
+      <Text layoutX="48.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StellplatzID" />
+      <Text layoutX="52.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl" />
+      <Text layoutX="52.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt Name" />
+      <Text layoutX="52.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hersteller" />
       <Text layoutX="99.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt bearbeiten">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -35,5 +35,8 @@
       </Text>
       <TextField fx:id="productNameField" layoutX="176.0" layoutY="247.0" prefWidth="150.0" />
       <TextField fx:id="manufacturerField" layoutX="176.0" layoutY="279.0" prefWidth="150.0" />
+      <ComboBox fx:id="stellplatzIDSelection" layoutX="276.0" layoutY="175.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="stellplatzIDField" layoutX="146.0" layoutY="175.0" prefHeight="25.0" prefWidth="73.0" />
+      <Text layoutX="251.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neu" />
    </children>
 </AnchorPane>

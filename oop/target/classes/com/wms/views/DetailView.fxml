@@ -35,7 +35,6 @@
             <TextField fx:id="regal" editable="false" layoutX="259.0" layoutY="199.0" prefHeight="25.0" prefWidth="130.0" />
             <TextField fx:id="lager" editable="false" layoutX="56.0" layoutY="199.0" prefHeight="25.0" prefWidth="130.0" />
             <Button fx:id="cancelButton" layoutX="2.0" layoutY="292.0" mnemonicParsing="false" text="Zurück" />
-            <Button fx:id="checktOutProductButton" layoutX="257.0" layoutY="292.0" mnemonicParsing="false" text="Produkt auschecken" />
             <Label layoutX="244.0" layoutY="16.0" text="Anzahl:" />
             <TextField fx:id="amountField" editable="false" layoutX="292.0" layoutY="12.0" prefHeight="25.0" prefWidth="96.0" />
             </children>

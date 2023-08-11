@@ -118,7 +118,7 @@ public class ProductController implements Initializable {
         
         //setzt die Dropdown-Werte für Regal-Kategorien
         ObservableList<String> categories = FXCollections.observableArrayList();
-        categories.addAll("Normal","Haltbarkeitslimitiert","Temperaturbedingt","Beides");
+        categories.addAll("Normal","Haltbarkeitslimitiert","Temperaturbedingt");
         productTypeDropDown.setItems(categories);
 
         //setzt die Dropdown-Werte für Regal-Typen
@@ -161,14 +161,6 @@ public class ProductController implements Initializable {
                     expiryDateField.setVisible(false);
                     temperatureField.setVisible(true);
                     expiryDateText.setVisible(false);
-                    climateCategoryText.setVisible(true);
-                    temperatureText.setVisible(true);
-                    break;
-                case "Beides":
-                    climateCategoryDropDown.setVisible(true);
-                    expiryDateField.setVisible(true);
-                    temperatureField.setVisible(true);
-                    expiryDateText.setVisible(true);
                     climateCategoryText.setVisible(true);
                     temperatureText.setVisible(true);
                     break;

@@ -50,7 +50,7 @@ public class Product implements Displayable {
         return this.amount;
     }
 
-    public void setAmout(int amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
@@ -125,6 +125,8 @@ public class Product implements Displayable {
         } catch (SQLException e) {
             System.err.println("Error deleting product: " + e.getMessage());
         }
+
+        
     }
 
     // Method to update the Product data in the database
@@ -134,13 +136,15 @@ public class Product implements Displayable {
         // Get the database connection
         try (Connection connection = con) {
             // Prepare the update query
-            String query = "UPDATE Product SET ProductNumber=?, StellplatzID=?, ProductName=?, Manufacturer=? WHERE ProductID=?";
+            String query = "UPDATE Product SET ProductNumber=?, StellplatzID=?, ProductName=?, Manufacturer=?, Amount=? WHERE ProductID=?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, this.productNumber);
             statement.setString(2, this.stellplatzID);
             statement.setString(3, this.productName);
             statement.setString(4, this.manufacturer);
-            statement.setInt(5, this.productID);
+            statement.setInt(5, this.amount);
+            statement.setInt(6, this.productID);
+
 
             // Execute the update query
             int rowsUpdated = statement.executeUpdate();
