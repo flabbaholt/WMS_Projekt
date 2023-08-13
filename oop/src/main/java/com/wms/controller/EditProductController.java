@@ -71,7 +71,13 @@ public class EditProductController implements Initializable {
             // Update the product with edited data
             product.setProductID(Integer.parseInt(productIDField.getText()));
             product.setProductNumber(productNumberField.getText());
-            product.setStellplatzID(stellplatzIDSelection.getValue());
+
+            //gucken ob ein neuer Standort ausgewaehlt wurde
+            if (stellplatzIDSelection.getValue()!=null){
+                product.setStellplatzID(stellplatzIDSelection.getValue());
+            }else{
+                product.setStellplatzID(stellplatzIDField.getText());
+            }
             product.setAmount(Integer.parseInt(amountField.getText()));
             product.setProductName(productNameField.getText());
             product.setManufacturer(manufacturerField.getText());
