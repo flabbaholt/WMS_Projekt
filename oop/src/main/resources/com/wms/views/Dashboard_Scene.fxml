@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.DashboardController">
+<children>
+   <Button fx:id="add_hangar" layoutX="8.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
+   <Label fx:id="company_name" layoutX="8.0" layoutY="12.0" text="Warehouse Management System">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+   </Label>
+      <TextField fx:id="searchTextField" layoutX="278.0" layoutY="8.0" prefHeight="26.0" prefWidth="745.0" promptText="Suchen..." />
+      <TableView fx:id="productTableView" layoutX="149.0" layoutY="76.0" onMouseClicked="#handleProductTableViewMouseClicked" prefHeight="402.0" prefWidth="915.0">
+        <columns>
+          <TableColumn fx:id="productIDColumn" prefWidth="68.79998779296875" text="ProductID" />
+          <TableColumn fx:id="productNumberColumn" prefWidth="137.0" text="Produkt Nummer" />
+            <TableColumn fx:id="stellplatzIDColumn" prefWidth="89.0" text="StellplatzID" />
+            <TableColumn fx:id="amountColumn" prefWidth="78.0" text="Anzahl" />
+            <TableColumn fx:id="productNameColumn" prefWidth="299.0" text="Produkt Name" />
+            <TableColumn fx:id="manufacturerColumn" minWidth="0.0" prefWidth="139.0" text="Hersteller" />
+            <TableColumn fx:id="arrivalTimeColumn" prefWidth="103.0" text="Ankunftszeit" />
+        </columns>
+      </TableView>
+      <Button fx:id="add_hangar" layoutX="8.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#handleAddHangarButtonClicked" prefHeight="25.0" prefWidth="134.0" text="Lager Hinzufügen" />
+      <Button fx:id="add_shelf" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#handleAddShelfButtonClicked" prefHeight="25.0" prefWidth="134.0" text="Regal Hinzufügen" />
+      <Button fx:id="add_product" layoutX="8.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#handleAddProductButtonClicked" prefHeight="25.0" prefWidth="134.0" text="Produkt Hinzufügen" />
+      <Button fx:id="edit_product" layoutX="8.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#handleEditProductButtonClicked" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: yellow;" text="Produkt bearbeiten" />
+      <Button fx:id="delete_product" layoutX="8.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#handleDeleteProductButtonClicked" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: red;" text="Produkt löschen" />
+      <Button fx:id="refreshData" layoutX="8.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleRefreshDataButtonClicked" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: green;" text="Refresh Data" />
+</children>
+        </AnchorPane>

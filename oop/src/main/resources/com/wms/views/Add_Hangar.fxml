@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wms.controller.HangarController">
+   <children>
+      <Label layoutX="184.0" layoutY="47.0" text="Lagerstandort hinzufügen!">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="185.0" layoutY="90.0" prefHeight="200.0" prefWidth="239.0">
+         <children>
+            <Button fx:id="submitAdd" layoutX="111.0" layoutY="145.0" mnemonicParsing="false" text="Hinzufügen" />
+            <TextField fx:id="hangerIdentification" layoutX="101.0" layoutY="42.0" prefHeight="25.0" prefWidth="122.0" promptText="Hangar Bezeichnung" text="" />
+            <Button fx:id="cancelAdd" layoutX="25.0" layoutY="145.0" mnemonicParsing="false" text="Zurück" />
+            <TextField fx:id="hangerSize" layoutX="101.0" layoutY="87.0" prefHeight="25.0" prefWidth="122.0" promptText="Hangar Größe in m2" text="" />
+            <Label layoutX="14.0" layoutY="46.0" text="Bezeichnung" />
+            <Label layoutX="14.0" layoutY="91.0" text="Fläche in m^2" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
