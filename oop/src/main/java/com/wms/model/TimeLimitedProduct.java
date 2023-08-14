@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.wms.SQL;
+import com.wms.util.SQL;
 
 public class TimeLimitedProduct extends Product {
     

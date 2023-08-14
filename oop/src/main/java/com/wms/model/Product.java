@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.wms.DatabaseConnection;
-import com.wms.SQL;
+import com.wms.util.SQL;
 import com.wms.model.interfaces.Displayable;
 
 public class Product implements Displayable {

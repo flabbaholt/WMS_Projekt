@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wms.SQL;
+import com.wms.util.SQL;
 import com.wms.model.interfaces.Displayable;
 import com.wms.util.Displayer;
 

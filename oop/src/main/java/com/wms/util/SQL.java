@@ -1,4 +1,4 @@
-package com.wms;
+package com.wms.util;
 
 import java.sql.*;
 import java.util.List;
